@@ -1,5 +1,5 @@
 #!/bin/bash
-
+EMAIL='st2@st.com' PASSWORD='stst'
 curl "http://localhost:4741/sign-up" \
   --include \
   --request POST \
