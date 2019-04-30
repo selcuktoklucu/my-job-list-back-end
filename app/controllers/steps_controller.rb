@@ -1,4 +1,4 @@
-class StepsController < ApplicationController
+class StepsController < ProtectedController
   before_action :set_step, only: [:show, :update, :destroy]
 
   # GET /steps
@@ -15,7 +15,7 @@ class StepsController < ApplicationController
 
   # POST /steps
   def create
-    @step = Step.new(step_params)
+    @step = current_user.steps.build(step_params)
 
     if @step.save
       render json: @step, status: :created, location: @step
@@ -41,7 +41,7 @@ class StepsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_step
-      @step = Step.find(params[:id])
+      @step = current_user.steps.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -42,7 +42,7 @@ class TasksController < ProtectedController
 
   # DELETE /tasks/1
   def destroy
-    @task = Task.find(params[:id])
+    # @task = current_user.tasks.find(params[:id])
     @task.destroy
   end
 
